@@ -158,7 +158,7 @@ const Hero = () => {
       </div>
 
 
-      <ChatPage doctor={mockDoctors[0]} onBack={() => navigate('/')} />
+      {/* <ChatPage doctor={mockDoctors[0]} onBack={() => navigate('/')} /> */}
       {/* Animated scanning line */}
       {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50 animate-scan"></div> */}
     </section>
