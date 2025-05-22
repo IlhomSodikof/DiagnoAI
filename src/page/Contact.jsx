@@ -1,13 +1,15 @@
 import React from 'react';
 import { FaPhone, FaMapMarkerAlt, FaInstagram, FaTelegram, FaFacebook } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
+import BredCumb from '../components/BredCumb';
 
 const ContactPage = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Asosiy kontent */}
       <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center mb-8">Shifoxonlar manzili va telefon raqamlari</h1>
+        <BredCumb page="Tibbiy markaz" />
+        <h1 className="text-3xl font-bold text-center my-8">Shifoxonlar manzili va telefon raqamlari</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Kontakt ma'lumotlari */}

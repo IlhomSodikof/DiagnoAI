@@ -2,9 +2,31 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import ModernLogo from '../components/ModernLogo';
 import Logo from '../assets/logo.png';
+import ChatPage from './ChatPage';
 
 
 const Hero = () => {
+  const mockDoctors = [
+    {
+      id: 1,
+      name: 'Dr. Nodira Karimova',
+      specialty: 'Nevrolog',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg'
+    },
+    {
+      id: 2,
+      name: 'Dr. Sanjar Tursunov',
+      specialty: 'Gastroenterolog',
+      avatar: 'https://randomuser.me/api/portraits/men/33.jpg'
+    },
+    {
+      id: 3,
+      name: 'Dr. Dilshod Raximov',
+      specialty: 'Kardiolog',
+      avatar: 'https://randomuser.me/api/portraits/men/25.jpg'
+    }
+  ];
+
   const heroRef = useRef(null);
   const ctaRef = useRef(null);
   const statsRef = useRef(null);
@@ -136,7 +158,7 @@ const Hero = () => {
       </div>
 
 
-
+      <ChatPage doctor={mockDoctors[0]} onBack={() => navigate('/')} />
       {/* Animated scanning line */}
       {/* <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50 animate-scan"></div> */}
     </section>

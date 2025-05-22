@@ -4,6 +4,7 @@ import {
   FiTrendingDown, FiAlertCircle, FiCheckCircle,
   FiEdit2, FiSave, FiPrinter, FiDownload, FiPlus
 } from 'react-icons/fi';
+import BredCumb from '../components/BredCumb';
 
 const MedicalAnalysisDashboard = () => {
   // Mock bemor ma'lumotlari
@@ -184,7 +185,7 @@ const MedicalAnalysisDashboard = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Bemor sarlavhasi */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <div className=" mx-10 px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">{patient.name}</h1>
@@ -209,9 +210,10 @@ const MedicalAnalysisDashboard = () => {
           </div>
         </div>
       </div>
+      <div className='px-4 my-8 max-w-7xl mx-auto'> <BredCumb page="EKG" /></div>
 
       {/* Asosiy kontent */}
-      <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 py-6 pt-0 sm:px-6 lg:px-8">
         {/* Tab navigatsiya */}
         <div className="border-b border-gray-200">
           <nav className="-mb-px flex space-x-8">

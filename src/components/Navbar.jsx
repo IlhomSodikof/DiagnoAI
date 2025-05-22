@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
+import ProfileDropdown from './ProfileDropdown ';
 
 const Navbar = () => {
+  const user = {
+    name: "Aliyev Sherzod",
+    email: "aliyev@example.com",
+    role: "Admin",
+    avatar: "" // Agar rasm bo'lsa URL ni yozing
+  };
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -44,24 +51,22 @@ const Navbar = () => {
       {/* Navigation Links */}
       <ul className="absolute right-0 top-5 -z-10 flex w-full flex-col justify-end gap-10 rounded-b-2xl bg-white px-4 text-right font-medium md:static md:flex-row md:p-0 md:pt-0 md:text-left">
         {/* Individual Navigation Links */}
+
+
+
         <li>
-          <Link to="/ptient">Home</Link>
+          <Link to='/monitoring'>Monitoring</Link>
         </li>
         <li>
-          <Link to="/rentgen">Rentgen</Link>
+          <Link to='/labaratory'>Laboratoriya analizlari</Link>
+        </li>
+
+        <li>
+          <Link to='/contact'>Tibbiy markazlar</Link>
+
         </li>
         <li>
-          <Link to='/analysis'>Ekg</Link>
-        </li>
-        <li>
-          <Link to='/manitoring'>Monitoring</Link>
-        </li>
-        <li>
-          <Link to='/testimonials'>RTG</Link>
-        </li>
-        <li>
-          <Link to='/contact'>Tibiy markazlar</Link>
-          <Link to='/profile'>Profile</Link>
+          <Link ><ProfileDropdown user={user} /></Link>
         </li>
       </ul>
     </nav>

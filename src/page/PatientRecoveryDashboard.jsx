@@ -8,6 +8,7 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import BredCumb from '../components/BredCumb';
 
 const PatientRecoveryDashboard = () => {
   // Mock bemor ma'lumotlari
@@ -66,6 +67,7 @@ const PatientRecoveryDashboard = () => {
   // Chiziqli grafik
   const renderLineChart = () => (
     <ResponsiveContainer width="100%" height={400}>
+
       <LineChart data={filteredData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis
@@ -178,7 +180,8 @@ const PatientRecoveryDashboard = () => {
     ];
 
     return (
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center bg-amber-300">
+        <BredCumb page="EKG" />
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -210,6 +213,7 @@ const PatientRecoveryDashboard = () => {
 
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
+
         {metrics.map((metric, index) => {
           const value = lastData[metric.key];
           const isNormal = value >= metric.normalRange[0] && value <= metric.normalRange[1];
@@ -298,7 +302,7 @@ const PatientRecoveryDashboard = () => {
           </div>
         </div>
       </div>
-
+      <BredCumb page="Statistika" />
       {/* Boshqaruv paneli */}
       <div className="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">

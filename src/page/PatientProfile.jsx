@@ -150,9 +150,11 @@ const PatientProfile = () => {
           {showMonitoringDropdown && (
             <div className="absolute z-10 mt-2 w-56 bg-white rounded-md shadow-lg">
               <div className="py-1">
-                <Link to="/manitoring" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Manitoring</Link>
+                <Link to="/monitoring" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Monitoring</Link>
                 <Link to="/rentgen" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rentgen</Link>
-                <Link to="/analysis" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Qon va yurak</Link>
+                <Link to="/analysis" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ekg</Link>
+                <Link to="/labaratory" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Labaratoya taxlili</Link>
+                <Link to="/statistic" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Statistika</Link>
               </div>
             </div>
           )}
@@ -200,7 +202,7 @@ const PatientProfile = () => {
 
         {/* Appointment Section */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Do'ktor qabuliga yozilish</h2>
+          <h2 className="text-xl font-bold text-gray-800 mb-4">Do'ktor qabuliga murojat</h2>
 
           <form onSubmit={handleSubmitAppointment} className="space-y-4">
             <div>

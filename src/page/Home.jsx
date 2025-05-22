@@ -1,3 +1,4 @@
+import ChatPage from "./ChatPage";
 
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
 
   return (
     <div >
+      <ChatPage />
       <div className="relative overflow-hidden">
         <header className="bg-white shadow-sm absolute z-50 top-0 inset-x-0">
           <nav className="items-center justify-between mx-auto flex max-w-screen-2xl p-4">
