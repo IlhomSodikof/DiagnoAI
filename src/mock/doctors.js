@@ -1,0 +1,32 @@
+export const doctors = [
+  {
+    id: 1,
+    name: "Dr. Alisher Xalimov",
+    specialty: "Kardiolog",
+    online: true,
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    rating: 4.8,
+    experience: 12,
+    languages: ["O'zbek", "Rus", "Ingliz"],
+  },
+  {
+    id: 2,
+    name: "Dr. Malika Yusupova",
+    specialty: "Nevropatolog",
+    online: true,
+    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+    rating: 4.9,
+    experience: 15,
+    languages: ["O'zbek", "Ingliz"],
+  },
+  {
+    id: 3,
+    name: "Dr. Jamshid Ismoilov",
+    specialty: "Pediator",
+    online: false,
+    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    rating: 4.7,
+    experience: 8,
+    languages: ["O'zbek", "Rus"],
+  },
+];
