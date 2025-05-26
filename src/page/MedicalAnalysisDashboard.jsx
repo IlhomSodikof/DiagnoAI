@@ -28,7 +28,7 @@ const MedicalAnalysisDashboard = () => {
     axis: 45, // degrees
     interpretation: 'Normal EKG',
     abnormalities: 'Yo\'q',
-    imageUrl: 'https://example.com/ekg-wave.png'
+    imageUrl: 'https://lh7-us.googleusercontent.com/docsz/AD_4nXcTV4S5NDzvIzTBdjwUdtQF6d7kBuqPo_oh8nbxfT7v8CPr80Lr3Jt5aeS4Hk6J9IzZIKsUI7eBEzb5rndjKCWMFVsbH-5MO0DYJ_3MyWlG_Noq16huPG3h0b025Zl5pRIOCM9Fnt8UyVRO4f6EfesS9tk?key=Kti1kOCj8HExy-ua1VmN0Q'
   };
 
   // Mock qon tahlillari
