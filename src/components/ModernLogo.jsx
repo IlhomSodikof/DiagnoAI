@@ -69,7 +69,7 @@ const ModernLogo = () => {
 
       {/* Logo Text */}
       <div className="flex">
-        {['D', 'I', 'A', 'G', 'N', 'O', ' ', 'A', 'I'].map((letter, index) => (
+        {['D', 'I', 'A', 'G', 'N', 'O', ' ', 'A', 'I', 'L', 'A', 'B'].map((letter, index) => (
           <span
             key={index}
             ref={addToRefs}

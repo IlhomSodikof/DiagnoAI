@@ -67,20 +67,21 @@ const ProfileDropdown = ({ user }) => {
             <FiUser className="mr-2" />
             Profilim
           </Link>
-          <a
+          {/* <a
             href="#"
             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
           >
             <FiSettings className="mr-2" />
             Sozlamalar
-          </a>
-          <a
-            href="#"
+          </a> */}
+          <Link
+            to="/"
             className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 border-t border-gray-100"
           >
             <FiLogOut className="mr-2" />
             Chiqish
-          </a>
+          </Link>
+
         </div>
       )}
     </div>

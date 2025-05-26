@@ -154,6 +154,7 @@ const PatientProfile = () => {
                 <Link to="/rentgen" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Rentgen</Link>
                 <Link to="/analysis" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ekg</Link>
                 <Link to="/labaratory" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Labaratoya taxlili</Link>
+                <Link to="/parmacy" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Dorixona</Link>
                 <Link to="/statistic" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Statistika</Link>
               </div>
             </div>

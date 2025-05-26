@@ -16,14 +16,20 @@ import PatientDailyMonitoring from './page/PatientDailyMonitoring'
 import ContactPage from './page/Contact'
 import PatientProfile from './page/PatientProfile'
 import EMRDashboard from './page/EMRDashboard'
+import OnlinePharmacy from './page/OnlinePharmacy'
+import RegistrationForm from './page/RegistrationForm'
+import Login from './page/Login'
 
 export default function App() {
   return (
     <>
       <Routes>
+
         <Route path="/" element={<Layoute />}>
-          {/* <Route index element={<Home />} /> */}
-          <Route index element={<Hero />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/register' element={<RegistrationForm />} />
+
+          <Route path='/home' element={<Hero />} />
           <Route path='/rentgen' element={<XRayAnalysis />} />
           <Route path='/analysis' element={<MedicalAnalysisDashboard />} />
           <Route path='/statistic' element={<PatientRecoveryDashboard />} />
@@ -32,6 +38,7 @@ export default function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/profile" element={<PatientProfile />} />
           <Route path="/labaratory" element={<EMRDashboard />} />
+          <Route path="/parmacy" element={<OnlinePharmacy />} />
         </Route>
       </Routes>
 

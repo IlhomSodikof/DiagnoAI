@@ -96,7 +96,7 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-6">
+          {/* <div className="mt-10 flex flex-col sm:flex-row gap-6">
             <button
               ref={ctaRef}
               className="relative px-12 py-3 text-white font-bold rounded-4xl overflow-hidden"
@@ -126,7 +126,7 @@ const Hero = () => {
                 </span>
               </span>
             </button>
-          </div>
+          </div> */}
 
           {/* Stats Cards */}
           <div ref={statsRef} className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
