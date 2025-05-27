@@ -52,20 +52,24 @@ const Navbar = () => {
       <ul className="absolute right-0 top-5 -z-10 flex w-full flex-col justify-end gap-10 rounded-b-2xl bg-white px-4 text-right font-medium md:static md:flex-row md:p-0 md:pt-0 md:text-left">
         {/* Individual Navigation Links */}
 
-        {/*
+
 
         <li>
           <Link to='/monitoring'>Monitoring</Link>
         </li>
         <li>
           <Link to='/labaratory'>Laboratoriya analizlari</Link>
-          <Link to='/parmacy'>Online Dorixona</Link>
-        </li>
 
+        </li>
+        <li>
+          <Link to='/analysis'>Ekg</Link>
+
+        </li>
+        <li><Link to='/parmacy'>Online Dorixona</Link></li>
         <li>
           <Link to='/contact'>Tibbiy markazlar</Link>
 
-        </li> */}
+        </li>
         <li>
           <Link ><ProfileDropdown user={user} /></Link>
         </li>
