@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   FiHeart, FiDroplet, FiActivity, FiTrendingUp,
   FiTrendingDown, FiAlertCircle, FiCheckCircle,
-  FiEdit2, FiSave, FiPrinter, FiDownload, FiPlus
+  FiEdit2, FiSave, FiPrinter, FiDownload, FiPlus, FiUpload, FiX,
+  FiMaximize
 } from 'react-icons/fi';
 import BredCumb from '../components/BredCumb';
 
@@ -17,6 +18,9 @@ const MedicalAnalysisDashboard = () => {
     doctor: 'Dr. Nodira Xalilova'
   };
 
+  // Default EKG image
+  const defaultEkgImage = 'https://lh7-us.googleusercontent.com/docsz/AD_4nXcTV4S5NDzvIzTBdjwUdtQF6d7kBuqPo_oh8nbxfT7v8CPr80Lr3Jt5aeS4Hk6J9IzZIKsUI7eBEzb5rndjKCWMFVsbH-5MO0DYJ_3MyWlG_Noq16huPG3h0b025Zl5pRIOCM9Fnt8UyVRO4f6EfesS9tk?key=Kti1kOCj8HExy-ua1VmN0Q';
+
   // Mock EKG ma'lumotlari
   const initialEkgData = {
     date: '2023-11-15',
@@ -28,7 +32,7 @@ const MedicalAnalysisDashboard = () => {
     axis: 45, // degrees
     interpretation: 'Normal EKG',
     abnormalities: 'Yo\'q',
-    imageUrl: 'https://lh7-us.googleusercontent.com/docsz/AD_4nXcTV4S5NDzvIzTBdjwUdtQF6d7kBuqPo_oh8nbxfT7v8CPr80Lr3Jt5aeS4Hk6J9IzZIKsUI7eBEzb5rndjKCWMFVsbH-5MO0DYJ_3MyWlG_Noq16huPG3h0b025Zl5pRIOCM9Fnt8UyVRO4f6EfesS9tk?key=Kti1kOCj8HExy-ua1VmN0Q'
+    imageUrl: defaultEkgImage
   };
 
   // Mock qon tahlillari
@@ -67,6 +71,35 @@ const MedicalAnalysisDashboard = () => {
     { id: 1, text: 'Bemorda yurak urish tezligi normal dozada', date: '2023-11-15 09:30', doctor: 'Dr. Nodira Xalilova' },
     { id: 2, text: 'Qon tahlillarida glyukoza normal diapazonda', date: '2023-11-15 10:15', doctor: 'Dr. Nodira Xalilova' }
   ]);
+  const [imagePreview, setImagePreview] = useState(null);
+  const fileInputRef = useRef(null);
+
+  // Handle image upload
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+        setEkgData({ ...ekgData, imageUrl: reader.result });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  // Remove uploaded image and revert to default
+  const removeUploadedImage = () => {
+    setImagePreview(null);
+    setEkgData({ ...ekgData, imageUrl: defaultEkgImage });
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // Trigger file input click
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
 
   // Qon bosimini baholash
   const evaluateBloodPressure = (systolic, diastolic) => {
@@ -181,6 +214,17 @@ const MedicalAnalysisDashboard = () => {
     link.click();
   };
 
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
+
+  // Rasmni kattalashtirish funksiyasi
+  const zoomImage = () => {
+    setIsImageZoomed(true);
+  };
+
+  // Rasmni yopish funksiyasi
+  const closeZoomedImage = () => {
+    setIsImageZoomed(false);
+  };
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Bemor sarlavhasi */}
@@ -258,21 +302,78 @@ const MedicalAnalysisDashboard = () => {
             <div className="px-4 py-5 sm:p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* EKG tasviri */}
-                <div className="border border-gray-200 rounded-lg p-4">
-                  <div className="h-64 bg-gray-100 rounded-md flex items-center justify-center">
-                    <img
-                      src={ekgData.imageUrl}
-                      alt="EKG tasviri"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="mt-4">
-                    <h4 className="text-sm font-medium text-gray-500">EKG tasviri</h4>
-                    <div className="mt-1 flex space-x-2">
-                      <button className="text-sm text-blue-600 hover:text-blue-800">Kattalashtirish</button>
-                      <button className="text-sm text-blue-600 hover:text-blue-800">Yuklab olish</button>
+                <div className="min-h-screen bg-gray-50">
+                  {/* Kattalashtirilgan rasm modal oynasi */}
+                  {isImageZoomed && (
+                    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4" onClick={closeZoomedImage}>
+                      <div className="relative max-w-full max-h-full">
+                        <button
+                          className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 z-10"
+                          onClick={closeZoomedImage}
+                        >
+                          <FiX className="text-gray-800" size={24} />
+                        </button>
+                        <img
+                          src={ekgData.imageUrl}
+                          alt="Kattalashtirilgan EKG tasviri"
+                          className="max-w-full max-h-screen object-contain"
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ... (qolgan JSX kod o'zgarishsiz) */}
+
+                  {/* EKG tasviri qismi (o'zgartirilgan) */}
+                  <div className="border border-gray-200 rounded-lg p-4">
+                    <div className="h-64 w-full bg-gray-100 rounded-md flex items-center justify-center relative">
+                      <img
+                        src={ekgData.imageUrl}
+                        alt="EKG tasviri"
+                        className="max-h-full max-w-full object-contain cursor-pointer"
+                        onClick={zoomImage}
+                      />
+                    </div>
+                    <div className="mt-4">
+                      <h4 className="text-sm font-medium text-gray-500">EKG tasviri</h4>
+                      <div className="mt-1 flex gap-3 space-x-2">
+                        <button
+                          onClick={zoomImage}
+                          className="text-sm text-blue-600 hover:text-blue-800 flex items-center"
+                        >
+                          <FiMaximize className="mr-1" /> Kattalashtirish
+                        </button>
+                        {!isEditing && (
+                          <>
+                            <button
+                              onClick={triggerFileInput}
+                              className="text-sm text-blue-600 hover:text-blue-800 flex items-center"
+                            >
+                              <FiUpload className="mr-1" /> Yuklash
+                            </button>
+                            {ekgData.imageUrl !== defaultEkgImage && (
+                              <button
+                                onClick={removeUploadedImage}
+                                className="text-sm text-blue-600 hover:text-blue-800 flex items-center"
+                              >
+                                <FiX className="mr-1" /> O'chirish
+                              </button>
+                            )}
+                            <input
+                              type="file"
+                              ref={fileInputRef}
+                              onChange={handleImageUpload}
+                              accept="image/*"
+                              className="hidden"
+                            />
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
+
+                  {/* ... (qolgan JSX kod o'zgarishsiz) */}
                 </div>
 
                 {/* EKG parametrlari */}
