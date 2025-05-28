@@ -62,10 +62,19 @@ const Navbar = () => {
 
         </li>
         <li>
+          <Link to='/rentgen'>Rentgen</Link>
+
+        </li>
+        <li>
           <Link to='/analysis'>Ekg</Link>
 
         </li>
-        <li><Link to='/parmacy'>Online Dorixona</Link></li>
+        <li><Link to='/parmacy'>Dorixona</Link></li>
+        <li>
+          <Link to='/statistic'>Statistika</Link>
+
+        </li>
+
         <li>
           <Link to='/contact'>Tibbiy markazlar</Link>
 
